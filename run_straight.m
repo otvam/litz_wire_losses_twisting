@@ -7,7 +7,7 @@ function run_straight()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 close('all');
-addpath(genpath('code'))
+addpath(genpath('src'))
 
 %% get the parameters
 

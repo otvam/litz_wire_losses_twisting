@@ -1,5 +1,5 @@
-function run_twisted()
-% Compute Litz wire losses with twisted strands
+function run_random()
+% Compute Litz wire losses with random twisting
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (c) 2016-2020, ETH Zurich, T. Guillod
 % (c) 2025-2025, Dartmouth College, T. Guillod
@@ -16,7 +16,7 @@ addpath(genpath('src'))
 
 % get the permutation between the strands defining the twisting
 for i=1:n
-    perm{i} = circshift(1:n, i);
+    perm{i} = randperm(n);
 end
 
 % set the excitation and twisting
@@ -29,14 +29,6 @@ design.perm = perm; % permutation between the strands defining the twisting
 %% plot the geometry
 plot_geom(design, 'Geometry');
 
-%% get the analytical solution
-[P_tot, P_skin, P_proxy_int, P_proxy_ext] = run_analytical_litz(design);
-fprintf('analytical\n')
-fprintf('    P_tot = %.3f mW\n', 1e3.*P_tot)
-fprintf('    P_skin = %.3f mW\n', 1e3.*P_skin)
-fprintf('    P_proxy_int = %.3f mW\n', 1e3.*P_proxy_int)
-fprintf('    P_proxy_ext = %.3f mW\n', 1e3.*P_proxy_ext)
-
 %% get the numerical solution
 [I_vec, P_vec] = run_numerical(design);
 plot_field(design, 1e3.*I_vec, 'Current (mA)');
@@ -44,6 +36,5 @@ plot_field(design, 1e3.*P_vec, 'Losses (mW)');
 fprintf('numerical\n')
 fprintf('    P_tot = %.3f mW\n', 1e3.*sum(P_vec))
 fprintf('    P_std = %.3f mW\n', 1e3.*std(P_vec))
-fprintf('    err = %.3f %%\n', 1e2.*abs(sum(P_vec)-P_tot)./P_tot)
 
 end
