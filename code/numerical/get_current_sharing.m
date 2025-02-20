@@ -1,7 +1,11 @@
 function [I_vec, H_x, H_y] = get_current_sharing(design, R_mat, L_mat)
-% solve the current sharing problem between the strands
+% Solve the current sharing problem between the strands
 %     - the wires are parallel connected and the total current is imposed
 %     - the static inductance and resistance matrices are used
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% (c) 2016-2020, ETH Zurich, T. Guillod
+% (c) 2025-2025, Dartmouth College, T. Guillod
+% Published under the 2-Clause BSD License
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % extract the data
@@ -11,6 +15,7 @@ I = design.I;
 H_x = design.H_x;
 H_y = design.H_y;
 perm = design.perm;
+l_wire = design.l_wire;
 
 % compute the impedance and the induced voltage
 s = 2.*pi.*1i.*f;
@@ -18,8 +23,8 @@ Z_self = s.*L_mat.self+R_mat;
 V_ext = s.*L_mat.ext_x.*H_x+s.*L_mat.ext_y.*H_y;
 
 % twisting of the wire (permutation)
-Z_self = permute_matrix(n, Z_self, perm);
-V_ext = permute_vector(n, V_ext, perm);
+Z_self = permute_matrix(n, Z_self, perm, l_wire);
+V_ext = permute_vector(n, V_ext, perm, l_wire);
 
 % set the equation system (the strands are parallel connected)
 A = [Z_self -eye(n, n) zeros(n,1) ; ones(1, n) zeros(1, n+1) ; zeros(n, n) eye(n, n) -ones(n,1)];
@@ -33,15 +38,15 @@ I_vec = x(1:n);
 
 end
 
-function mat_perm = permute_matrix(n, mat, perm)
-% compute the permutations for the a matrix
+function mat_perm = permute_matrix(n, mat, perm, l_wire)
+% Compute the permutations for the a matrix
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 mat_perm = zeros(n, n);
 
 for i=1:length(perm)
     idx = perm{i};
-    wgt = 1./length(perm);
+    wgt = l_wire./length(perm);
 
     mat_tmp = wgt.*mat(idx, idx);
     mat_perm = mat_perm+mat_tmp;
@@ -49,15 +54,15 @@ end
 
 end
 
-function vec_perm = permute_vector(n, vec, perm)
-% compute the permutations for the a vector
+function vec_perm = permute_vector(n, vec, perm, l_wire)
+% Compute the permutations for the a vector
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 vec_perm = zeros(n, 1);
 
 for i=1:length(perm)
     idx = perm{i};
-    wgt = 1./length(perm);
+    wgt = l_wire./length(perm);
 
     vec_tmp = wgt.*vec(idx);
     vec_perm = vec_perm+vec_tmp;

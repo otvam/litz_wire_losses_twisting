@@ -1,5 +1,9 @@
 function [I_vec, P_vec] = run_numerical(design)
-% numerical solution for the losses of a Litz wire with custom twisting
+% Numerical solution for the losses of a Litz wire with custom twisting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% (c) 2016-2020, ETH Zurich, T. Guillod
+% (c) 2025-2025, Dartmouth College, T. Guillod
+% Published under the 2-Clause BSD License
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % extract the matrices

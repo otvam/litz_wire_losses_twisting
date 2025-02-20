@@ -1,5 +1,9 @@
 function P_vec = get_losses_sum(design, coeff, H_mat, I_vec)
-% compute the losses of the different strands
+% Compute the losses of the different strands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% (c) 2016-2020, ETH Zurich, T. Guillod
+% (c) 2025-2025, Dartmouth College, T. Guillod
+% Published under the 2-Clause BSD License
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % extract the data
@@ -7,6 +11,7 @@ n = design.n;
 H_x = design.H_x;
 H_y = design.H_y;
 perm = design.perm;
+l_wire = design.l_wire;
 
 % initialize the losses
 P_vec = zeros(n, 1);
@@ -14,7 +19,7 @@ P_vec = zeros(n, 1);
 % sum the contribution of the different permutations
 for i=1:length(perm)
     idx = perm{i};
-    wgt = 1./length(perm);
+    wgt = l_wire./length(perm);
 
     I_vec_tmp = I_vec(idx);
     P_vec_tmp = wgt.*get_losses_strand(coeff, H_mat, H_x, H_y, I_vec_tmp);
@@ -25,7 +30,7 @@ end
 
 
 function P_vec = get_losses_strand(coeff, H_mat, H_x, H_y, I_vec)
-% compute the skin and proximity losses for a given excitation
+% Compute the skin and proximity losses for a given excitation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % extract the magnetic field
