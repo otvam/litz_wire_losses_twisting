@@ -1,7 +1,5 @@
 function I_sharing_vec = get_current_sharing(design, R_mat, L_mat)
 % Solve the current sharing problem between the strands
-%     - the wires are parallel connected and the total current is imposed
-%     - the static inductance and resistance matrices are used
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (c) 2016-2020, ETH Zurich, T. Guillod
 % (c) 2025-2025, Dartmouth College, T. Guillod
