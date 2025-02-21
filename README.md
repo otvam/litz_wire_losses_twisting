@@ -37,8 +37,8 @@ The following examples are included:
 ### Gallery
 
 <p float="middle">
+    <img src="readme_img/geom.png" width="250">
     <img src="readme_img/current.png" width="250">
-    <img src="readme_img/field.png" width="250">
     <img src="readme_img/sharing.png" width="250">
 </p>
 
