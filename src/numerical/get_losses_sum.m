@@ -1,4 +1,4 @@
-function [P_avg_vec, I_avg_vec, H_avg_vec] = get_losses_sum(design, coeff, H_mat, I_sharing_vec)
+function [P_avg_vec, I_avg_vec, H_avg_vec] = get_losses_sum(design, R_dc, FR, GR, H_mat, I_sharing_vec)
 % Compute the losses of the different strands.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (c) 2016-2020, ETH Zurich, T. Guillod
@@ -23,7 +23,8 @@ for i=1:length(perm)
     idx = perm{i};
     wgt = 1./length(perm);
 
-    [P_vec_tmp, I_vec_tmp, H_vec_tmp] = get_losses_strand(coeff, H_mat, H_x, H_y, I_sharing_vec, idx);
+    [I_vec_tmp, H_vec_tmp] = get_excitation_strand(H_mat, H_x, H_y, I_sharing_vec, idx);
+    P_vec_tmp = get_losses_strand(R_dc, FR, GR, I_vec_tmp, H_vec_tmp);
     
     P_avg_vec = P_avg_vec+l_wire.*wgt.*P_vec_tmp;
     I_avg_vec = I_avg_vec+wgt.*I_vec_tmp;
@@ -33,8 +34,8 @@ end
 end
 
 
-function [P_vec, I_vec, H_vec] = get_losses_strand(coeff, H_mat, H_x, H_y, I_sharing_vec, idx)
-% Compute the skin and proximity losses for a given excitation.
+function [I_vec, H_vec] = get_excitation_strand(H_mat, H_x, H_y, I_sharing_vec, idx)
+% Compute the current and magnetic field for the different strands.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % permute the current
@@ -48,9 +49,15 @@ H_vec = hypot(H_x_vec, H_y_vec);
 % extract the current field
 I_vec = abs(I_vec);
 
+end
+
+function P_vec = get_losses_strand(R_dc, FR, GR, I_vec, H_vec)
+% Compute the skin and proximity losses for a given excitation.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % compute the losses
-P_skin = coeff.R_dc.*coeff.FR.*I_vec.^2;
-P_proxy = coeff.R_dc.*coeff.GR.*H_vec.^2;
+P_skin = R_dc.*FR.*I_vec.^2;
+P_proxy = R_dc.*GR.*H_vec.^2;
 P_vec = P_skin+P_proxy;
 
 end

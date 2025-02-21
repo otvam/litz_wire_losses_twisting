@@ -24,10 +24,10 @@ sigma = design.sigma;
 fill = design.fill;
 d_cond = design.d_cond;
 l_wire = design.l_wire;
-coeff = get_bessel_coeff(sigma.*fill, d_cond, f);
+[R_dc, FR, GR] = get_bessel_coeff(sigma.*fill, d_cond, f);
 
 % compute the losses
-[P_tot, P_skin, P_proxy] = get_losses(coeff, design);
+[P_tot, P_skin, P_proxy] = get_losses(R_dc, FR, GR, design);
 
 % scale losses
 P_tot = l_wire.*P_tot;
@@ -36,14 +36,9 @@ P_proxy = l_wire.*P_proxy;
 
 end
 
-function [P_tot, P_skin, P_proxy] = get_losses(coeff, design)
+function [P_tot, P_skin, P_proxy] = get_losses(R_dc, FR, GR, design)
 % Compute the losses
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% extract the data
-FR = coeff.FR;
-GR = coeff.GR;
-R_dc = coeff.R_dc;
 
 % extract the data
 I = design.I;

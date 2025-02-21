@@ -41,13 +41,13 @@ d_pole = design.d_pole;
 f = design.f;
 sigma = design.sigma;
 d = design.d_strand;
-coeff = get_bessel_coeff(sigma, d, f);
+[R_dc, FR, GR] = get_bessel_coeff(sigma, d, f);
 
 % solve the current sharing problem
 I_sharing_vec = get_current_sharing(design, R_mat, L_mat);
 
 % evaluate the losses of the strands
-[P_avg_vec, I_avg_vec, H_avg_vec] = get_losses_sum(design, coeff, H_mat, I_sharing_vec);
+[P_avg_vec, I_avg_vec, H_avg_vec] = get_losses_sum(design, R_dc, FR, GR, H_mat, I_sharing_vec);
 
 end
 

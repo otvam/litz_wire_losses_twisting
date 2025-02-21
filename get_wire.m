@@ -8,10 +8,10 @@ function  [n, design] = get_wire()
 
 %% load the wire geometry
 geom = load('geom.mat');
-n = geom.n;
+d_strand = geom.d_strand;
 x_vec = geom.x_vec;
 y_vec = geom.y_vec;
-d_strand = geom.d_strand;
+n = geom.n;
 
 %% compute the wire parameters
 d_cond = 2.*max(hypot(x_vec, y_vec))+d_strand;
