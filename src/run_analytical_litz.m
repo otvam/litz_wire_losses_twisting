@@ -1,17 +1,17 @@
 function [P_tot, P_skin, P_proxy_int, P_proxy_ext] = run_analytical_litz(design)
-% Analytical formula for the losses of a perfectecly twisted Litz wire
-%    - the strands are fully twisted
-%    - the formula for solid wire is used at the strand level
-%    - the conductictivity of the conductor material is used
+% Analytical formula for the losses of a perfectecly twisted Litz wire.
+%    - The strands are fully twisted.
+%    - The formula for solid wire is used at the strand level.
+%    - The conductictivity of the conductor material is used.
 %
 %    Parameters:
-%        design (struct): structure with the problem definition
+%        design (struct): Structure with the problem definition.
 %
 %    Returns:
-%        P_tot (scalar): total losses
-%        P_skin (scalar): skin effect losses
-%        P_proxy_int (scalar): internal proximity effect losses
-%        P_proxy_ext (scalar): external proximity effect losses
+%        P_tot (scalar): Total losses.
+%        P_skin (scalar): Skin effect losses.
+%        P_proxy_int (scalar): Internal proximity effect losses.
+%        P_proxy_ext (scalar): External proximity effect losses.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (c) 2016-2020, ETH Zurich, T. Guillod

@@ -1,16 +1,16 @@
 function [P_tot, P_skin, P_proxy] = run_analytical_plain(design)
 % Analytical formula for the losses of a untwisted Litz wire
-%    - the strands are not twisted
-%    - the formula for solid wire is used for the complete wire
-%    - the conductictivity is adapted with the fill factor
+%    - The strands are not twisted.
+%    - The formula for solid wire is used for the complete wire.
+%    - The conductictivity is adapted with the fill factor.
 %
 %    Parameters:
-%        design (struct): structure with the problem definition
+%        design (struct): Structure with the problem definition.
 %
 %    Returns:
-%        P_tot (scalar): total losses
-%        P_skin (scalar): skin effect losses
-%        P_proxy (scalar): proximity effect losses
+%        P_tot (scalar): Total losses.
+%        P_skin (scalar): Skin effect losses.
+%        P_proxy (scalar): Proximity effect losses.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (c) 2016-2020, ETH Zurich, T. Guillod

@@ -1,5 +1,5 @@
 function coeff = get_bessel_coeff(sigma, d, f)
-% Compute the Bessel functions for the losses (skin and proximity) in a round wire
+% Compute the Bessel functions for the losses (skin and proximity) in a round wire.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (c) 2016-2020, ETH Zurich, T. Guillod
 % (c) 2025-2025, Dartmouth College, T. Guillod

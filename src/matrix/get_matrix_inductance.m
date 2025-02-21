@@ -1,5 +1,5 @@
 function matrix = get_matrix_inductance(x_vec, y_vec, d_strand, d_pole)
-% Compute the resistance matrix (including the contribution of the background field)
+% Compute the resistance matrix (including the contribution of the background field).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (c) 2016-2020, ETH Zurich, T. Guillod
 % (c) 2025-2025, Dartmouth College, T. Guillod
@@ -22,7 +22,7 @@ matrix.ext_y = L_ext_y;
 end
 
 function L = get_L_intern(x_vec, y_vec, d_strand, d_pole)
-% Get the inductance matrix between the conductor
+% Get the inductance matrix between the conductor.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % find the distance between the original conductors
@@ -40,7 +40,7 @@ L = get_L_sub(d_pole, d_square_mat);
 end
 
 function L = get_L_sub(d_pole, d_square_mat)
-% Get the inductance between conductors
+% Get the inductance between conductors.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % compute the inductance
@@ -56,7 +56,7 @@ L(idx_nan) = 0.0;
 end
 
 function [v1_mat,v2_mat] = get_matrix_coordinate(v1, v2)
-% Meshgrid the space formed by two vectors
+% Meshgrid the space formed by two vectors.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 v1_mat = (v1.')*ones(1,length(v2));

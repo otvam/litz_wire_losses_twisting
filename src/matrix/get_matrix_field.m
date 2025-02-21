@@ -1,5 +1,5 @@
 function matrix = get_matrix_field(n, x_vec, y_vec)
-% Compute the matrices for computing the magnetic field in the center of the wires
+% Compute the matrices for computing the magnetic field in the center of the wires.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (c) 2016-2020, ETH Zurich, T. Guillod
 % (c) 2025-2025, Dartmouth College, T. Guillod
@@ -26,7 +26,7 @@ matrix.y = H_y;
 end
 
 function [H_x, H_y] = get_H_xy_sub(x_mat, y_mat, d_square_mat, I_vec)
-% Get the vector magnetic field produced by the conductors
+% Get the vector magnetic field produced by the conductors.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % compute the distance
@@ -46,7 +46,7 @@ H_y = cst.*H_y_tmp*I_vec;
 end
 
 function [v1_mat,v2_mat] = get_matrix_coordinate(v1, v2)
-% Meshgrid the space formed by two vectors
+% Meshgrid the space formed by two vectors.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 v1_mat = (v1.')*ones(1,length(v2));

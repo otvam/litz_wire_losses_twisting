@@ -9,13 +9,13 @@ This **MATLAB** tool extracts the **losses of a litz wire winding** with **custo
 A **2.5D method** is used to simulate the impact of the **twisting imperfection** on the **losses**.
 
 The code is a simplified version of the method used in the **following paper**:
-* T. Guillod, J. Huber, F. Krismer and J. W. Kolar
+* T. Guillod, J. Huber, F. Krismer, and J. W. Kolar
 * Litz wire losses: Effects of twisting imperfections
 * IEEE COMPEL 2017, Stanford, CA, USA
 * https://doi.org/10.1109/COMPEL.2017.8013327.
 
 The following **method** is used to compute the **losses**:
-* the geometry of the wire is given (coordinate of the strands)
+* the geometry of the wire is given (coordinates of the strands)
 * the twisting is defined with a permutation matrix (twisting of the strands)
 * the DC inductance and DC resistance matrices are extracted (analytical solution)
 * the permutation matrix is applied to the impedance matrix (twisting of the strands)

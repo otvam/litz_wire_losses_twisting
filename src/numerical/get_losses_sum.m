@@ -1,5 +1,5 @@
 function [P_avg_vec, I_avg_vec, H_avg_vec] = get_losses_sum(design, coeff, H_mat, I_sharing_vec)
-% Compute the losses of the different strands
+% Compute the losses of the different strands.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (c) 2016-2020, ETH Zurich, T. Guillod
 % (c) 2025-2025, Dartmouth College, T. Guillod
@@ -34,7 +34,7 @@ end
 
 
 function [P_vec, I_vec, H_vec] = get_losses_strand(coeff, H_mat, H_x, H_y, I_sharing_vec, idx)
-% Compute the skin and proximity losses for a given excitation
+% Compute the skin and proximity losses for a given excitation.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % permute the current

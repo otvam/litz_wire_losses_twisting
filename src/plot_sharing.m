@@ -1,9 +1,9 @@
 function plot_sharing(v_vec, name)
-% Plot the histogram of the absolute value of a variable
+% Plot the histogram of the absolute value of a variable.
 %
 %    Parameters:
-%        v_vec (vector): variable to be displayed
-%        name (string): title of the plot
+%        v_vec (vector): Variable to be displayed.
+%        name (string): Title of the plot.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (c) 2016-2020, ETH Zurich, T. Guillod

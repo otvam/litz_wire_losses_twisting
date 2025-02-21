@@ -1,5 +1,5 @@
 function FR = get_bessel_FR(sigma, d, f)
-% Compute the Bessel functions for the skin losses in a round wire
+% Compute the Bessel functions for the skin losses in a round wire.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (c) 2016-2020, ETH Zurich, T. Guillod
 % (c) 2025-2025, Dartmouth College, T. Guillod
@@ -20,7 +20,7 @@ FR = chi./(4.*sqrt(2)).*((num_1-num_2)./den);
 end
 
 function out = KelvinBer(v,x)
-% Get the Kelvin function (real part)
+% Get the Kelvin function (real part).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 out = real(besselj(v, x.*exp(3.*1i.*pi./4)));
@@ -28,7 +28,7 @@ out = real(besselj(v, x.*exp(3.*1i.*pi./4)));
 end
 
 function out = KelvinBei(v,x)
-% Get the Kelvin function (image part)
+% Get the Kelvin function (image part).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 out = imag(besselj(v, x.*exp(3.*1i.*pi./4)));

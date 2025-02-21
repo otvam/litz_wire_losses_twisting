@@ -1,5 +1,5 @@
 function I_sharing_vec = get_current_sharing(design, R_mat, L_mat)
-% Solve the current sharing problem between the strands
+% Solve the current sharing problem between the strands.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (c) 2016-2020, ETH Zurich, T. Guillod
 % (c) 2025-2025, Dartmouth College, T. Guillod
@@ -37,7 +37,7 @@ I_sharing_vec = x(1:n);
 end
 
 function mat_perm = permute_matrix(n, mat, perm, l_wire)
-% Compute the permutations for the a matrix
+% Compute the permutations for the a matrix.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 mat_perm = zeros(n, n);
@@ -55,7 +55,7 @@ end
 end
 
 function vec_perm = permute_vector(n, vec, perm, l_wire)
-% Compute the permutations for the a vector
+% Compute the permutations for the a vector.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 vec_perm = zeros(n, 1);
