@@ -42,7 +42,7 @@ H_x = design.H_x;
 H_y = design.H_y;
 
 % compute the losses
-P_skin = R_dc.*FR.*I.^2;
+P_skin = R_dc.*FR.*abs(I).^2;
 P_proxy = R_dc.*GR.*hypot(H_x, H_y).^2;
 
 % sum the spectral components

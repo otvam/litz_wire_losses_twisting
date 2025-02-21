@@ -30,11 +30,16 @@ design.perm = perm; % permutation between the strands defining the twisting
 plot_geom(design, 'Geometry');
 
 %% get the numerical solution
-[I_vec, P_vec] = run_numerical(design);
-plot_field(design, 1e3.*I_vec, 'Current (mA)');
-plot_field(design, 1e3.*P_vec, 'Losses (mW)');
+[I_sharing_vec, P_avg_vec, I_avg_vec, H_avg_vec] = run_numerical(design);
+
+plot_field(design, 1e3.*P_avg_vec, 'Losses (mW)');
+plot_field(design, 1e3.*I_avg_vec, 'Current (mA)');
+plot_field(design, 1e-3.*H_avg_vec, 'Field (kA/m)');
+plot_sharing(1e3.*I_sharing_vec, 'Current (mA)');
+
 fprintf('numerical\n')
-fprintf('    P_tot = %.3f mW\n', 1e3.*sum(P_vec))
-fprintf('    P_std = %.3f mW\n', 1e3.*std(P_vec))
+fprintf('    P_tot = %.3f mW\n', 1e3.*sum(P_avg_vec))
+fprintf('    P_std = %.3f mW\n', 1e3.*std(P_avg_vec))
+fprintf('    P_mean = %.3f mW\n', 1e3.*mean(P_avg_vec))
 
 end

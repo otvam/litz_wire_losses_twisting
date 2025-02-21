@@ -1,4 +1,4 @@
-function [I_vec, H_x, H_y] = get_current_sharing(design, R_mat, L_mat)
+function I_sharing_vec = get_current_sharing(design, R_mat, L_mat)
 % Solve the current sharing problem between the strands
 %     - the wires are parallel connected and the total current is imposed
 %     - the static inductance and resistance matrices are used
@@ -34,7 +34,7 @@ b = [-V_ext ; I ; zeros(n,1)];
 x = A\b;
 
 % extract the strand currents
-I_vec = x(1:n);
+I_sharing_vec = x(1:n);
 
 end
 
@@ -46,10 +46,12 @@ mat_perm = zeros(n, n);
 
 for i=1:length(perm)
     idx = perm{i};
-    wgt = l_wire./length(perm);
+    wgt = 1./length(perm);
 
-    mat_tmp = wgt.*mat(idx, idx);
-    mat_perm = mat_perm+mat_tmp;
+    rev = zeros(1, length(idx));
+    rev(idx) = 1:length(idx);
+
+    mat_perm = mat_perm+l_wire.*wgt.*mat(rev, rev);
 end
 
 end
@@ -62,10 +64,12 @@ vec_perm = zeros(n, 1);
 
 for i=1:length(perm)
     idx = perm{i};
-    wgt = l_wire./length(perm);
+    wgt = 1./length(perm);
 
-    vec_tmp = wgt.*vec(idx);
-    vec_perm = vec_perm+vec_tmp;
+    rev = zeros(1, length(idx));
+    rev(idx) = 1:length(idx);
+
+    vec_perm = vec_perm+l_wire.*wgt.*vec(rev);
 end
 
 end

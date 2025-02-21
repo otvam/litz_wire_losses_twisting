@@ -31,6 +31,7 @@ plot_geom(design, 'Geometry');
 
 %% get the analytical solution
 [P_tot, P_skin, P_proxy_int, P_proxy_ext] = run_analytical_litz(design);
+
 fprintf('analytical\n')
 fprintf('    P_tot = %.3f mW\n', 1e3.*P_tot)
 fprintf('    P_skin = %.3f mW\n', 1e3.*P_skin)
@@ -38,12 +39,17 @@ fprintf('    P_proxy_int = %.3f mW\n', 1e3.*P_proxy_int)
 fprintf('    P_proxy_ext = %.3f mW\n', 1e3.*P_proxy_ext)
 
 %% get the numerical solution
-[I_vec, P_vec] = run_numerical(design);
-plot_field(design, 1e3.*I_vec, 'Current (mA)');
-plot_field(design, 1e3.*P_vec, 'Losses (mW)');
+[I_sharing_vec, P_avg_vec, I_avg_vec, H_avg_vec] = run_numerical(design);
+
+plot_field(design, 1e3.*P_avg_vec, 'Losses (mW)');
+plot_field(design, 1e3.*I_avg_vec, 'Current (mA)');
+plot_field(design, 1e-3.*H_avg_vec, 'Field (kA/m)');
+plot_sharing(1e3.*I_sharing_vec, 'Current (mA)');
+
 fprintf('numerical\n')
-fprintf('    P_tot = %.3f mW\n', 1e3.*sum(P_vec))
-fprintf('    P_std = %.3f mW\n', 1e3.*std(P_vec))
-fprintf('    err = %.3f %%\n', 1e2.*abs(sum(P_vec)-P_tot)./P_tot)
+fprintf('    P_tot = %.3f mW\n', 1e3.*sum(P_avg_vec))
+fprintf('    P_std = %.3f mW\n', 1e3.*std(P_avg_vec))
+fprintf('    P_mean = %.3f mW\n', 1e3.*mean(P_avg_vec))
+fprintf('    err = %.3f %%\n', 1e2.*abs(sum(P_avg_vec)-P_tot)./P_tot)
 
 end

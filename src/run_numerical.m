@@ -1,4 +1,4 @@
-function [I_vec, P_vec] = run_numerical(design)
+function [I_sharing_vec, P_avg_vec, I_avg_vec, H_avg_vec] = run_numerical(design)
 % Numerical solution for the losses of a Litz wire with custom twisting
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % (c) 2016-2020, ETH Zurich, T. Guillod
@@ -22,10 +22,10 @@ d = design.d_strand;
 coeff = get_bessel_coeff(sigma, d, f);
 
 % solve the current sharing problem
-I_vec = get_current_sharing(design, R_mat, L_mat);
+I_sharing_vec = get_current_sharing(design, R_mat, L_mat);
 
 % evaluate the losses of the strands
-P_vec = get_losses_sum(design, coeff, H_mat, I_vec);
+[P_avg_vec, I_avg_vec, H_avg_vec] = get_losses_sum(design, coeff, H_mat, I_sharing_vec);
 
 end
 
