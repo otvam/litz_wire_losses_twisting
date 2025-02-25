@@ -12,7 +12,7 @@ The code is a simplified version of the method used in the **following paper**:
 * T. Guillod, J. Huber, F. Krismer, and J. W. Kolar
 * Litz wire losses: Effects of twisting imperfections
 * IEEE COMPEL 2017, Stanford, CA, USA
-* https://doi.org/10.1109/COMPEL.2017.8013327.
+* https://doi.org/10.1109/COMPEL.2017.8013327
 
 The following **method** is used to compute the **losses**:
 * the geometry of the wire is given (coordinates of the strands)
